@@ -8,15 +8,15 @@ def rolar_dados (n):
         i += 1
     return lista
 
-def guardar_dado (dados_rolados, dados_noestoque, dados_paraguardar):
+def guardar_dado(dados_rolados, dados_noestoque, dados_paraguardar):
     dado = dados_rolados[dados_paraguardar]
-    dados_noestoque.append(dado)
-    dados_rolados = dados_rolados[:dados_paraguardar] + dados_rolados [dados_paraguardar+1:]
+    dados_noestoque = dados_noestoque + [dado]
+    dados_rolados = dados_rolados[:dados_paraguardar] + dados_rolados[dados_paraguardar+1:]
     return [dados_rolados, dados_noestoque]
 
 def remover_dado(dados_rolados, dados_no_estoque, dado_para_remover):
     dado = dados_no_estoque[dado_para_remover]
-    dados_rolados.append(dado)
+    dados_rolados = dados_rolados + [dado]
     dados_no_estoque = dados_no_estoque[:dado_para_remover] + dados_no_estoque[dado_para_remover + 1:]
     return [dados_rolados, dados_no_estoque]
 
@@ -135,8 +135,8 @@ def faz_jogada (dados, categoria, cartela):
         cartela['regra_avancada'][categoria] = pontos_avancados[categoria]
 
     return cartela  
-  
 
+def imprime_cartela(cartela):
     print("Cartela de Pontos:")
     print("-"*25)    
     for i in range(1, 7):
